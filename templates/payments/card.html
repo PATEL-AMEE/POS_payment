@@ -1,0 +1,24 @@
+{% extends "payments/base.html" %}
+{% block title %}Card Payment {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm rounded-4">
+      <div class="card-body p-4">
+        <h1 class="h5 fw-bold mb-1">Card Payment</h1>
+        <div class="text-muted mb-4">Ask customer to tap/insert their debit card.</div>
+
+        <div class="amount-big text-center mb-4">£{{ amount }}</div>
+
+        <form method="post" class="d-grid gap-3">
+          {% csrf_token %}
+          <button class="btn btn-primary btn-lg btn-lg-merchant" type="submit">Start Payment</button>
+          <a class="btn btn-outline-secondary btn-lg btn-lg-merchant" href="{% url 'choose_method' %}">Back</a>
+          <a class="btn btn-outline-danger btn-lg btn-lg-merchant" href="{% url 'home' %}">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "payments/base.html" %}
+{% block title %}Success {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm rounded-4 border-success">
+      <div class="card-body p-4 text-center">
+        <div class="display-6">✅</div>
+        <h1 class="h4 fw-bold mt-2">Payment successful</h1>
+        <div class="text-muted mb-2">Ref: {{ tx.reference }}</div>
+        <div class="amount-big mb-4">£{{ tx.amount }}</div>
+
+        <div class="d-grid gap-3">
+          <a class="btn btn-primary btn-lg btn-lg-merchant" href="{% url 'new_sale' %}">New Sale</a>
+          <a class="btn btn-outline-secondary btn-lg btn-lg-merchant" href="{% url 'transactions' %}">View Transactions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

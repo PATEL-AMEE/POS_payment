@@ -1,0 +1,29 @@
+{% extends "payments/base.html" %}
+{% block title %}Refund Successful {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm rounded-4 border-info">
+      <div class="card-body p-4 text-center">
+        <div class="display-6">↩️</div>
+        <h1 class="h4 fw-bold mt-2">Refund successful</h1>
+
+        <div class="text-muted mt-3">
+          <div>Amount: <span class="fw-semibold">£{{ tx.amount }}</span></div>
+          <div>Method: <span class="fw-semibold">{{ tx.get_method_display }}</span></div>
+          <div>Original Ref: <span class="fw-semibold">{{ tx.reference }}</span></div>
+          <div>Refund Ref: <span class="fw-semibold">{{ tx.refund_reference }}</span></div>
+          <div>Refunded At: <span class="fw-semibold">{{ tx.refunded_at|date:"d M Y, H:i" }}</span></div>
+          <div>Status: <span class="fw-semibold">{{ tx.status|title }}</span></div>
+        </div>
+
+        <div class="d-grid gap-3 mt-4">
+          <a class="btn btn-outline-secondary btn-lg" href="{% url 'transaction_detail' tx.id %}">Back to Transaction</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'transactions' %}">View Transactions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

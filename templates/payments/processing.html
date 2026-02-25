@@ -1,0 +1,27 @@
+{% extends "payments/base.html" %}
+{% block title %}Processing {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm rounded-4">
+      <div class="card-body p-4 text-center">
+        <div class="spinner-border" role="status"></div>
+        <h1 class="h5 fw-bold mt-3 mb-1">Processing…</h1>
+        <div class="text-muted mb-3">Please wait</div>
+
+        <div class="fw-semibold">£{{ tx.amount }} • {{ tx.get_method_display }}</div>
+        <div class="text-muted small">Ref: {{ tx.reference }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  setTimeout(() => {
+    window.location.href = "{% url 'result' tx.id %}";
+  }, 1000);
+</script>
+{% endblock %}
